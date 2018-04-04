@@ -22,7 +22,7 @@ function varargout = main(varargin)
 
 % Edit the above text to modify the response to help main
 
-% Last Modified by GUIDE v2.5 04-Apr-2018 22:07:54
+% Last Modified by GUIDE v2.5 04-Apr-2018 23:24:11
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -60,7 +60,12 @@ guidata(hObject, handles);
 
 % UIWAIT makes main wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
+movegui(hObject, 'center')
 
+% set default text
+now = datetime('today');
+set(handles.edit_period_from, 'String', datestr(now, 'yyyy/mm/dd'));
+set(handles.edit_period_to, 'String', datestr(now + 365, 'yyyy/mm/dd'));
 
 % --- Outputs from this function are returned to the command line.
 function varargout = main_OutputFcn(hObject, eventdata, handles) 
@@ -78,4 +83,6 @@ function button_test_Callback(hObject, eventdata, handles)
 % hObject    handle to button_test (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+plot(handles.axes_test, [1, 2, 3], [4, 5, 6]);
 disp('Test OK')

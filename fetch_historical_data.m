@@ -1,7 +1,7 @@
 function [success, output] = fetch_historical_data(stockSymbol, from, to)
 % fetch_historical_data: Fetch financial historical data from Yahoo! Server
-%   Usage: fetch_historical_data('0011.HK', datenum(2017,1,1),
-%                                                       datenum(2018,1,1)
+%   Usage: [success, output] = fetch_historical_data('0011.HK',
+%                                     datenum(2017,1,1), datenum(2018,1,1))
 
 % convert the time before we change dir
 from_unix = date_to_unix_timestamp(from);
@@ -23,7 +23,16 @@ cd(workDir);
 
 % assume fail if the exit code is not 0
 if (status ~= 0) 
+    delete(tmp_file);
     success = false;
+    return;
+end
+
+stats = dir(tmp_file);
+if (stats.bytes <= 1)
+    delete(tmp_file);
+    success = false;
+    output = 'No data can be fetched.';
     return;
 end
 
