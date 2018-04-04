@@ -1,0 +1,3 @@
+[submodule "yahoo-financial-historical-fetcher"]
+	path = yahoo-financial-historical-fetcher
+	url = ssh://git@github.com/brian9206/yahoo-financial-historical-fetcher
