@@ -1,6 +1,6 @@
 function [success, output] = fetch_historical_data(stockSymbol, from, to)
 % fetch_historical_data: Fetch financial historical data from Yahoo! Server
-%   Usage: [success, output] = fetch_historical_data('0011.HK',
+% Usage: [success, output] = fetch_historical_data('0011.HK',
 %                                     datenum(2017,1,1), datenum(2018,1,1))
 
 % convert the time before we change dir
